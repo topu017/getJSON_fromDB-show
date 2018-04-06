@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Show JSON in HTML</h2>
+
+
+<table id="show_data"></table>
+
+<script>
+var showData, data, xmlhttp;
+showData = { "table":"customers", "limit":10 };
+data = JSON.stringify(showData);
+xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("show_data").innerHTML = this.responseText;
+    }
+};
+xmlhttp.open("GET", "customer_list.php?x=" + data, true);
+xmlhttp.send();
+
+</script>
+
+</body>
+</html>
